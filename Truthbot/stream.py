@@ -2,16 +2,11 @@ from azure.ai.projects import AIProjectClient
 from azure.identity import DefaultAzureCredential
 from azure.ai.agents.models import ListSortOrder  
 from utils import tavily_web_search
+from call_agent import run_agent_and_get_response, project, agent
 import os
 from dotenv import load_dotenv
 
 load_dotenv()
-
-project = AIProjectClient(
-    credential=DefaultAzureCredential(),
-    endpoint=os.getenv("agent_project"))
-
-agent = project.agents.get_agent(os.getenv("agent_id"))
 
 
 
@@ -54,36 +49,13 @@ def run_truth_bot():
                 search_context += f"   Source: {result.get('source', 'N/A')}\n\n"
         
         # PHASE 2: SearchAgent (Orchestrator) analyzes and gathers info
-        print("\n[→] PHASE 2: SearchAgent (Orchestrator) processing...")
-        thread = project.agents.threads.create()
-        message = project.agents.messages.create(
-                thread_id=thread.id,
-                role="user",
-               content=(f"this is the claim {claim} and those are the search results {search_context}")
-            )
-        run = project.agents.runs.create_and_process(
-            thread_id=thread.id,
-            agent_id=agent.id,
-        )
+        response = run_agent_and_get_response(project, agent, claim, search_context)
         
-
-      
-
-      
-
-        # Get the result back and print it
-        messages = project.agents.messages.list(
-            thread_id=thread.id,
-            order=ListSortOrder.ASCENDING,
-          )
-        if run.status == "failed":
-          print(f"Run failed: {run.last_error}")
-        else:
-            messages = project.agents.messages.list(thread_id=thread.id, order=ListSortOrder.ASCENDING)
-
-        for message in messages:
-            if message.text_messages:
-                print(f"{message.role}: {message.text_messages[-1].text.value}")
+        # Print the result back
+        print("\n" + "-"*70)
+        print("FINAL VERDICT:")
+        print("-"*70 + "\n")
+        print(response)
     except Exception as e:
         print(f"\n[✗] Error during execution: {str(e)}")
         import traceback
