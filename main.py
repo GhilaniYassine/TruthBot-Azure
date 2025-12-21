@@ -1,7 +1,7 @@
 from azure.ai.projects import AIProjectClient 
 from azure.identity import DefaultAzureCredential
 from azure.ai.agents.models import ListSortOrder  
-from utils import tavily_web_search ,run_agent_and_get_response, project, agent
+from endpoint.utils import tavily_web_search ,run_agent_and_get_response, project, agent
 import os
 from dotenv import load_dotenv
 

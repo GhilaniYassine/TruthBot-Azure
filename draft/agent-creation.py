@@ -5,7 +5,7 @@ import os
 from dotenv import load_dotenv
 import json
 import time
-from utils import tavily_web_search
+from endpoint.utils import tavily_web_search
 
 load_dotenv()
 project_endpoint = os.getenv("project_endpoint")
