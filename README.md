@@ -22,6 +22,8 @@ TruthBot works in three phases:
 - **Foundry Agent Service** - Microsoft Foundry for multi-agent AI orchestration
 - **Tavily API** - Web search and information retrieval
 - **Streamlit** - Modern, interactive web interface
+- **FastAPI** - High-performance REST API framework
+- **Pydantic** - Data validation and serialization
 
 ## 🚀 Getting Started
 
