@@ -1,25 +1,101 @@
-# TruthBot Tavily Integration
+# 🔍 TruthBot - AI-Powered Fact Checker
 
-## Overview
+TruthBot is an intelligent fact-checking application that verifies claims using AI-powered agents and web search. It combines real-time web research with advanced AI analysis to provide detailed, credible fact-check verdicts.
 
-This document explains how the TruthBot pipeline connects Tavily web search results to the Azure AI Foundry agent and why the agent is created without a tool reference.
+## ✨ What It Does
 
-## Flow Summary
+TruthBot works in three phases:
 
-1. Collect the user's claim from standard input.
-2. Call `tavily_search(...)` directly in Python to fetch authoritative sources (the Tavily Python SDK performs the HTTP request).
-3. Format the search results into a markdown-style context block that contains titles, URLs, and short excerpts.
-4. Create an Azure AI Foundry thread and send a single user message that contains both the original claim and the formatted search context.
-5. Run the `SearchAgent` against the thread. Because the search context is already embedded in the message, the agent only needs to reason over the supplied text and craft the final report.
+1. **🔎 Web Search**: Performs deep web searches using Tavily to find relevant sources and information about the claim
+2. **🤖 AI Analysis**: Passes search results to a sophisticated three-agent orchestration system:
+   - **SearchAgent** (Orchestrator): Coordinates the fact-checking process
+   - **AccuracyChecker**: Assesses source credibility
+   - **VerificationAnalyst**: Provides final fact-check verdicts
+3. **📊 Detailed Verdict**: Returns a comprehensive analysis with:
+   - Verdict (TRUE/FALSE/PARTIALLY TRUE)
+   - Confidence level
+   - Supporting evidence from sources
+   - Reasoning and limitations
 
-## Why `tools=[]`
+## 🛠️ Tech Stack
 
-The Azure AI Agents SDK only executes tool calls when the runtime contains the required function handlers. In this project the agent is invoked through `create_and_process(...)`, which does **not** surface function-call hooks. Instead, the process performs a synchronous run and returns the agent response. Because we deliver the search context up front, there is no requirement for the orchestrator to expose tool definitions to the agent, so `tools` is left empty.
+- **Foundry Agent Service** - Microsoft Foundry for multi-agent AI orchestration
+- **Tavily API** - Web search and information retrieval
+- **Streamlit** - Modern, interactive web interface
 
-## Why the Tavily function is not registered as a tool
+## 🚀 Getting Started
 
-- The Tavily search is executed inside the Python host process before the agent run begins. The agent receives the precomputed evidence inside the message payload, so it never needs to invoke Tavily itself.
-- Registering the function as a tool would require a polling loop that watches for `requires_action` states and manually submits tool outputs. The simplified synchronous flow avoids that complexity while still leveraging Tavily results.
-- Keeping the Tavily call outside the agent ensures the host application controls API usage, retries, and error handling. The agent only reasons over trusted text and cannot accidentally trigger additional API calls.
+### Prerequisites
+- Python 3.10+
+- Azure account with AI Projects setup
+- Tavily API key
 
-In short, the orchestrator performs the search, packages the findings, and hands them to the agent for analysis. This design keeps the Azure AI Agent focused on reasoning while the Python layer manages all external integrations.
+### Installation
+
+1. Clone the repository and navigate to the project directory
+2. Create a virtual environment:
+   ```bash
+   python -m venv env
+   source env/bin/activate  # On Windows: env\Scripts\activate
+   ```
+
+3. Install dependencies:
+   ```bash
+   pip install -r req.txt
+   ```
+
+4. Set up environment variables in `.env`:
+   ```
+   TAVILY_API_KEY=your_tavily_api_key
+   project_endpoint=your_azure_project_endpoint
+   model_deployment=your_model_deployment_name
+   agent_project=your_agent_project_endpoint
+   agent_id=your_agent_id
+   ```
+
+### Running the Application
+
+**Web Interface (Recommended)**:
+```bash
+streamlit run app.py
+```
+
+**Command Line**:
+```bash
+python main.py
+```
+
+**Agent Creation** (Setup agents):
+```bash
+python agent-creation.py
+```
+
+## 📁 Project Structure
+
+- `app.py` - Modern Streamlit web interface
+- `main.py` - Command-line version
+- `agent-creation.py` - Azure AI Agent setup and configuration
+- `call_agent.py` - Agent execution logic
+- `utils.py` - Tavily web search utility function
+- `systemMessage/` - AI agent system prompts
+  - `SearchAgent.md` - Orchestrator agent instructions
+  - `AccuracyChecker.md` - Source credibility assessment
+  - `VerificationAnalyst.md` - Final verdict analysis
+
+## 🎯 Key Features
+
+- ✅ Real-time web search integration
+- ✅ Multi-agent AI reasoning system
+- ✅ Beautiful, modern Streamlit UI
+- ✅ Comprehensive fact-check verdicts
+- ✅ Source credibility assessment
+- ✅ Azure cloud-native architecture
+- ✅ Environment variable configuration
+
+## 📝 License
+
+This project is part of the TruthBot initiative for combating misinformation.
+
+---
+
+**Made with ❤️ using  Agent service  & Tavily Search**
