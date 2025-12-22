@@ -104,25 +104,20 @@ export const VerdictMessage = ({ verdict, searchResults }: VerdictMessageProps) 
         {/* Header with Verdict */}
         <motion.div
           className={cn(
-            "bg-gradient-to-r p-6 flex items-center gap-4",
+            "bg-gradient-to-r p-6",
             config.color
           )}
           variants={itemVariants}
         >
-          <Icon className="w-8 h-8 flex-shrink-0" />
-          <div className="flex-1">
-            <div className="text-sm font-semibold opacity-90">{config.label}</div>
-            <div className="text-2xl font-bold">{config.emoji}</div>
+          <div className="flex items-start gap-3">
+            <Icon className="w-6 h-6 flex-shrink-0 mt-1" />
+            <div className="flex-1">
+              <h2 className="text-xl font-bold text-white leading-relaxed">
+                {verdict.verdictType === "TRUE" ? "✅ THAT'S TRUE " : "❌ THAT'S FALSE "}
+                <span className="block text-base font-semibold opacity-90 mt-1">Here is why:</span>
+              </h2>
+            </div>
           </div>
-          {verdict.confidence && (
-            <motion.div
-              className="text-right"
-              whileHover={{ scale: 1.1 }}
-            >
-              <div className="text-3xl font-bold">{verdict.confidence}%</div>
-              <div className="text-xs opacity-75">Confidence</div>
-            </motion.div>
-          )}
         </motion.div>
 
         {/* Content */}
@@ -209,24 +204,7 @@ export const VerdictMessage = ({ verdict, searchResults }: VerdictMessageProps) 
           )}
 
           {/* Limitations */}
-          {verdict.limitations && verdict.limitations.length > 0 && (
-            <motion.div
-              variants={itemVariants}
-              className="rounded-lg bg-slate-700/20 border border-slate-600/30 p-3"
-            >
-              <h3 className="text-xs font-semibold text-slate-300 mb-2 flex items-center gap-2">
-                <span>📌</span> Limitations
-              </h3>
-              <ul className="space-y-1">
-                {verdict.limitations.map((limitation, idx) => (
-                  <li key={idx} className="text-xs text-slate-300 leading-relaxed flex gap-2">
-                    <span className="text-slate-500 flex-shrink-0">•</span>
-                    <span>{limitation}</span>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          )}
+          {/* REMOVED: Limitations section */}
 
           {/* Search Results Count */}
           {verdict.searchResultsCount && (
