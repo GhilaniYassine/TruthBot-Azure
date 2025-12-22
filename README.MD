@@ -1,4 +1,21 @@
-# 🤖 TruthBot - AI-Powered Fact-Checking System
+# TruthBot - AI-Powered Fact-Checking System
+
+<div align="center">
+
+![TruthBot Logo](frontend/src/assets/truthbot-logo.png)
+
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+[![Python](https://img.shields.io/badge/Python-3.10+-3776ab?style=for-the-badge&logo=python)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-009688?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com/)
+[![Pydantic](https://img.shields.io/badge/Pydantic-V2-e92063?style=for-the-badge&logo=pydantic)](https://docs.pydantic.dev/)
+
+[![Azure](https://img.shields.io/badge/Azure-AI-0078d4?style=for-the-badge&logo=microsoft-azure)](https://azure.microsoft.com/)
+[![Tavily API](https://img.shields.io/badge/Tavily-Search-FF6B35?style=for-the-badge)](https://tavily.com/)
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github)](https://github.com/GhilaniYassine/TruthBot-Azure)
+
+</div>
+
+---
 
 > **Challenge**: This project was proposed by **AI4GOOD** company at the **NUIT D'INFO Hackathon** as a challenge I wanted to work on again and push further.
 
