@@ -94,11 +94,11 @@ export const VerdictMessage = ({ verdict }: VerdictMessageProps) => {
     >
       <motion.div
         className={cn(
-          "max-w-2xl rounded-2xl border-2 overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300",
+          "max-w-2xl rounded-2xl border-2 overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 backdrop-blur-sm",
           config.bgColor,
           config.borderColor
         )}
-        whileHover={{ scale: 1.02 }}
+        whileHover={{ scale: 1.01 }}
       >
         {/* Header with Verdict */}
         <motion.div

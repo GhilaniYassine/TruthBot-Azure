@@ -6,6 +6,7 @@ import { toast } from "@/hooks/use-toast";
 import { factCheckClaim, parseVerdict, type ParsedVerdict } from "@/services/api";
 import { ChatMessage } from "./ChatMessage";
 import { VerdictMessage } from "./VerdictMessage";
+import truthBotLogo from "../assets/truthbot-logo.png";
 
 export interface ChatMessage {
   id: string;
@@ -151,16 +152,43 @@ export const ChatInterface = ({ onReset }: ChatInterfaceProps) => {
     if (onReset) onReset();
   };
 
+  // Check if we only have the initial welcome message
+  const isInitialState = messages.length === 1 && messages[0].id === "welcome";
+
   return (
     <div className="flex flex-col h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 dark:from-slate-950 dark:via-purple-950 dark:to-slate-950">
-      {/* Header */}
-      <div className="bg-gradient-to-r from-purple-600 to-blue-600 shadow-lg border-b border-purple-500/20">
-        <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
+      {/* Enhanced Header */}
+      <div className={cn(
+        "transition-all duration-300",
+        isInitialState 
+          ? "bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-600 shadow-2xl backdrop-blur-sm" 
+          : "bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-600 shadow-lg backdrop-blur-sm sticky top-0 z-10 py-3"
+      )}>
+        <div className={cn(
+          "w-full px-4 md:px-8 flex items-center justify-between transition-all duration-300",
+          isInitialState ? "py-5" : ""
+        )}>
           <div className="flex items-center gap-3">
-            <div className="text-3xl">🔍</div>
-            <div>
-              <h1 className="text-2xl font-bold text-white">TruthBot</h1>
-              <p className="text-purple-100 text-sm">AI-Powered Fact-Checking</p>
+            <div className="relative flex-shrink-0">
+              <div className="absolute inset-0 bg-purple-400 rounded-full blur-xl opacity-45 animate-pulse"></div>
+              <img 
+                src={truthBotLogo} 
+                alt="TruthBot Logo" 
+                className={cn(
+                  "relative drop-shadow-xl hover:scale-105 transition-all duration-300 object-contain",
+                  isInitialState ? "w-24 h-24 md:w-28 md:h-28" : "w-16 h-16 md:w-20 md:h-20"
+                )}
+              />
+            </div>
+            <div className="flex flex-col justify-center">
+              <h1 className={cn(
+                "font-bold text-white tracking-tight leading-tight transition-all duration-300",
+                isInitialState ? "text-4xl md:text-5xl" : "text-2xl md:text-3xl"
+              )}>TruthBot</h1>
+              <p className={cn(
+                "text-purple-100 font-medium transition-all duration-300",
+                isInitialState ? "text-base md:text-lg mt-1" : "text-xs md:text-sm mt-0.5"
+              )}>Verify • Fact-Check • Discover Truth</p>
             </div>
           </div>
           {messages.length > 1 && (
@@ -168,67 +196,90 @@ export const ChatInterface = ({ onReset }: ChatInterfaceProps) => {
               onClick={handleReset}
               variant="outline"
               size="sm"
-              className="border-purple-300 text-purple-100 hover:bg-purple-600"
+              className="border-purple-300 text-white hover:bg-white/10 hover:border-white hover:text-white transition-all duration-200 font-semibold px-4 py-2"
             >
-              New Chat
+              ✨ Start Fresh
             </Button>
           )}
         </div>
       </div>
 
-      {/* Chat Messages */}
-      <div className="flex-1 overflow-y-auto px-4 py-6 max-w-4xl mx-auto w-full">
-        <div className="space-y-4">
-          {messages.map((message) => (
-            <ChatMessage
-              key={message.id}
-              message={message}
-              verdict={message.verdict}
-            />
-          ))}
-          {isLoading && (
-            <div className="flex justify-start">
-              <div className="bg-slate-800/50 backdrop-blur-sm border border-purple-500/20 rounded-2xl px-4 py-3 max-w-xs">
-                <div className="flex gap-2">
-                  <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce"></div>
-                  <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: "0.1s" }}></div>
-                  <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce" style={{ animationDelay: "0.2s" }}></div>
+      {/* Chat Messages Container */}
+      {!isInitialState && (
+        <div className="flex-1 overflow-y-auto px-4 py-8">
+          <div className="max-w-3xl mx-auto space-y-5">
+            {messages.map((message) => (
+              <ChatMessage
+                key={message.id}
+                message={message}
+                verdict={message.verdict}
+              />
+            ))}
+            {isLoading && (
+              <div className="flex justify-start">
+                <div className="bg-gradient-to-r from-slate-800/50 to-purple-800/30 backdrop-blur-md border border-purple-500/30 rounded-3xl px-6 py-4 max-w-xs shadow-lg">
+                  <div className="flex gap-2 items-center">
+                    <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce"></div>
+                    <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: "0.1s" }}></div>
+                    <div className="w-2 h-2 bg-indigo-400 rounded-full animate-bounce" style={{ animationDelay: "0.2s" }}></div>
+                    <span className="text-purple-200 text-xs ml-2 font-medium">Fact-checking...</span>
+                  </div>
                 </div>
               </div>
-            </div>
-          )}
-          <div ref={messagesEndRef} />
+            )}
+            <div ref={messagesEndRef} />
+          </div>
         </div>
-      </div>
+      )}
 
-      {/* Input Area */}
-      <div className="border-t border-purple-500/20 bg-slate-900/80 backdrop-blur-sm px-4 py-4">
-        <form onSubmit={handleSubmit} className="max-w-4xl mx-auto">
-          <div className="flex gap-3">
+      {/* Centered Input Area (ChatGPT Style) */}
+      <div className={cn(
+        "transition-all duration-300",
+        isInitialState
+          ? "flex-1 flex flex-col items-center justify-center px-4"
+          : "px-4 py-6"
+      )}>
+        {isInitialState && (
+          <div className="text-center mb-8 max-w-2xl">
+            <h2 className="text-5xl md:text-6xl font-bold text-white mb-4">What can I fact-check for you?</h2>
+            <p className="text-purple-200 text-lg md:text-xl">Verify claims instantly with AI-powered research</p>
+          </div>
+        )}
+        
+        <form onSubmit={handleSubmit} className={cn(
+          "transition-all duration-300",
+          isInitialState ? "w-full max-w-2xl" : "w-full max-w-3xl mx-auto"
+        )}>
+          <div className="flex gap-4">
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Enter a claim to fact-check... e.g., 'The moon is made of cheese'"
+              placeholder="Ask me anything... e.g., 'Did Einstein really say this?'"
               disabled={isLoading}
               className={cn(
-                "flex-1 px-4 py-3 rounded-full border-2 bg-slate-800 text-white placeholder-slate-400 transition-all duration-200",
-                "border-purple-500/30 focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500/20",
-                "disabled:opacity-50 disabled:cursor-not-allowed"
+                "flex-1 px-6 py-4 rounded-full border-2 bg-slate-800/60 text-white placeholder-slate-500 transition-all duration-300",
+                "border-purple-500/40 focus:border-purple-500 focus:outline-none focus:ring-4 focus:ring-purple-500/30",
+                "disabled:opacity-50 disabled:cursor-not-allowed hover:bg-slate-800/80 backdrop-blur-sm",
+                "text-base shadow-lg"
               )}
             />
             <Button
               type="submit"
               disabled={isLoading || !input.trim()}
               className={cn(
-                "rounded-full w-12 h-12 p-0 transition-all duration-200",
-                "bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700",
-                "disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-purple-500/50"
+                "rounded-full w-14 h-14 p-0 transition-all duration-300 shadow-xl flex-shrink-0",
+                "bg-gradient-to-br from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700",
+                "disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-purple-500/60 active:scale-95"
               )}
+              title="Verify claim"
             >
-              <Send className="w-5 h-5" />
+              <Send className="w-6 h-6" />
             </Button>
           </div>
+          {!isInitialState && (
+            <p className="text-xs text-slate-500 mt-3 ml-2">Press Enter or click the button to fact-check</p>
+          )}
         </form>
       </div>
     </div>
