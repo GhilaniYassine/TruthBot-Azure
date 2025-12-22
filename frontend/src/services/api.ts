@@ -8,10 +8,17 @@ export interface FactCheckRequest {
   claim: string;
 }
 
+export interface SearchResult {
+  title: string;
+  url: string;
+  content: string;
+  source?: string;
+}
+
 export interface FactCheckResponse {
   claim: string;
-  search_results_count: number;
-  verdict: string; // Markdown-formatted string
+  search_results: SearchResult[];
+  verdict: string;
   success: boolean;
   error?: string;
 }

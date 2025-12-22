@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import { VerdictMessage } from "./VerdictMessage";
-import type { ParsedVerdict } from "@/services/api";
+import type { ParsedVerdict, FactCheckResponse } from "@/services/api";
 
 interface ChatMessageProps {
   message: {
@@ -8,13 +8,14 @@ interface ChatMessageProps {
     type: "user" | "bot" | "loading" | "verdict";
     content: string;
     timestamp: Date;
+    apiResponse?: FactCheckResponse;
   };
   verdict?: ParsedVerdict;
 }
 
 export const ChatMessage = ({ message, verdict }: ChatMessageProps) => {
   if (message.type === "verdict" && verdict) {
-    return <VerdictMessage verdict={verdict} />;
+    return <VerdictMessage verdict={verdict} searchResults={message.apiResponse?.search_results} />;
   }
 
   const isUser = message.type === "user";

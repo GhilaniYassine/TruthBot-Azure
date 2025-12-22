@@ -3,7 +3,7 @@ import { Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { toast } from "@/hooks/use-toast";
-import { factCheckClaim, parseVerdict, type ParsedVerdict } from "@/services/api";
+import { factCheckClaim, parseVerdict, type ParsedVerdict, type FactCheckResponse } from "@/services/api";
 import { ChatMessage } from "./ChatMessage";
 import { VerdictMessage } from "./VerdictMessage";
 import truthBotLogo from "../assets/truthbot-logo.png";
@@ -13,6 +13,7 @@ export interface ChatMessage {
   type: "user" | "bot" | "loading" | "verdict";
   content: string;
   verdict?: ParsedVerdict;
+  apiResponse?: FactCheckResponse;
   timestamp: Date;
 }
 
@@ -81,7 +82,7 @@ export const ChatInterface = ({ onReset }: ChatInterfaceProps) => {
       const parsedVerdict = parseVerdict(
         apiResponse.verdict,
         apiResponse.claim,
-        apiResponse.search_results_count
+        apiResponse.search_results.length
       );
 
       // Remove loading message and add verdict
@@ -92,6 +93,7 @@ export const ChatInterface = ({ onReset }: ChatInterfaceProps) => {
           type: "verdict",
           content: apiResponse.verdict,
           verdict: parsedVerdict,
+          apiResponse: apiResponse,
           timestamp: new Date(),
         },
       ]);

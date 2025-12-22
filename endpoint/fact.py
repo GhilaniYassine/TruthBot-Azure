@@ -1,8 +1,9 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from typing import List, Optional
 
-from utils import tavily_web_search, run_agent_and_get_response, project, agent
+from .utils import tavily_web_search, run_agent_and_get_response, project, agent
 
 app = FastAPI(title="TruthBot API", version="1.0.0")
 
@@ -25,6 +26,14 @@ app.add_middleware(
 )
 
 
+class SearchResult(BaseModel):
+    """Search result with title, URL, and content"""
+    title: str
+    url: str
+    content: str
+    source: Optional[str] = None
+
+
 class ClaimRequest(BaseModel):
     """Request model for fact-checking a claim"""
     claim: str
@@ -33,10 +42,10 @@ class ClaimRequest(BaseModel):
 class FactCheckResponse(BaseModel):
     """Response model for fact-checking results"""
     claim: str
-    search_results_count: int
+    search_results: List[SearchResult] = []
     verdict: str
     success: bool
-    error: str = None
+    error: Optional[str] = None
 
 
 @app.post("/fact-check", response_model=FactCheckResponse)
@@ -58,13 +67,23 @@ async def fact_check(request: ClaimRequest):
     try:
         # PHASE 1: Web Search
         search_result = tavily_web_search(claim)
+        search_results_list = []
         
         if not search_result.get("success"):
             search_context = f"Search failed: {search_result.get('error')}. Please provide analysis based on your knowledge."
-            results_count = 0
         else:
             results = search_result.get("results", [])
-            results_count = len(results)
+            
+            # Build search results list with URLs for frontend
+            for result in results:
+                search_results_list.append(
+                    SearchResult(
+                        title=result.get('title', 'N/A'),
+                        url=result.get('url', 'N/A'),
+                        content=result.get('content', 'N/A'),
+                        source=result.get('source')
+                    )
+                )
             
             # Format search results for agents
             search_context = f"Search Results for '{claim}':\n\n"
@@ -79,7 +98,7 @@ async def fact_check(request: ClaimRequest):
         
         return FactCheckResponse(
             claim=claim,
-            search_results_count=results_count,
+            search_results=search_results_list,
             verdict=verdict,
             success=True
         )

@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
-import { CheckCircle2, XCircle, AlertCircle, HelpCircle, Eye } from "lucide-react";
+import { CheckCircle2, XCircle, AlertCircle, HelpCircle, Eye, ExternalLink } from "lucide-react";
 import { cn } from "@/lib/utils";
-import type { ParsedVerdict } from "@/services/api";
+import type { ParsedVerdict, SearchResult } from "@/services/api";
 
 interface VerdictMessageProps {
   verdict: ParsedVerdict;
+  searchResults?: SearchResult[];
 }
 
 const verdictConfig = {
@@ -60,7 +61,7 @@ const verdictConfig = {
   },
 };
 
-export const VerdictMessage = ({ verdict }: VerdictMessageProps) => {
+export const VerdictMessage = ({ verdict, searchResults }: VerdictMessageProps) => {
   const config = verdictConfig[verdict.verdictType as keyof typeof verdictConfig];
   const Icon = config.icon;
 
@@ -137,6 +138,42 @@ export const VerdictMessage = ({ verdict }: VerdictMessageProps) => {
             <motion.div variants={itemVariants}>
               <h3 className="text-sm font-semibold text-slate-300 mb-2">Analysis</h3>
               <p className="text-slate-200 leading-relaxed">{verdict.reasoning}</p>
+            </motion.div>
+          )}
+
+          {/* Search Results Links */}
+          {searchResults && searchResults.length > 0 && (
+            <motion.div variants={itemVariants}>
+              <h3 className="text-sm font-semibold text-slate-300 mb-3">Fact Sources</h3>
+              <div className="space-y-2 max-h-96 overflow-y-auto">
+                {searchResults.slice(0, 5).map((result, idx) => (
+                  <motion.a
+                    key={idx}
+                    href={result.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block p-3 rounded-lg bg-slate-700/30 hover:bg-slate-600/50 transition-all group border border-slate-600/20 hover:border-blue-500/50"
+                    whileHover={{ x: 5, scale: 1.02 }}
+                  >
+                    <div className="flex items-start gap-3">
+                      <ExternalLink className="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" />
+                      <div className="flex-1 min-w-0">
+                        <div className="text-sm font-medium text-slate-100 group-hover:text-blue-300 line-clamp-2">
+                          {result.title}
+                        </div>
+                        <div className="text-xs text-slate-400 mt-1">
+                          {result.source || new URL(result.url).hostname}
+                        </div>
+                      </div>
+                    </div>
+                  </motion.a>
+                ))}
+              </div>
+              {searchResults.length > 5 && (
+                <p className="text-xs text-slate-400 mt-2 text-center">
+                  +{searchResults.length - 5} more sources
+                </p>
+              )}
             </motion.div>
           )}
 
