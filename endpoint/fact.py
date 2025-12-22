@@ -1,9 +1,28 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 from utils import tavily_web_search, run_agent_and_get_response, project, agent
 
 app = FastAPI(title="TruthBot API", version="1.0.0")
+
+# Enable CORS for frontend communication
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:5173",      # Vite dev server (default)
+        "http://localhost:3000",      # Alternative port
+        "http://localhost:8080",      # Another common port
+        "http://localhost:8000",      # If frontend runs on same port
+        "http://127.0.0.1:5173",
+        "http://127.0.0.1:3000",
+        "http://127.0.0.1:8080",
+        "http://127.0.0.1:8000",
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 class ClaimRequest(BaseModel):

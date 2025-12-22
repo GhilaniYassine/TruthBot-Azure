@@ -1,0 +1,391 @@
+🎯 DETAILED NEXT.JS FRONTEND PROMPT FOR TRUTHBOT-AZURE
+
+PROJECT BRIEF
+
+Build a **premium, AI-powered fact-checking platform interface** using Next.js 14+ and Tailwind CSS. This is the frontend for "TruthBot," a sophisticated multi-agent AI system that fact-checks claims in real-time using web research and AI reasoning. The design should feel **modern, trustworthy, and visually striking**—balancing scientific credibility with sleek tech aesthetics.
+
+---
+
+🎨 DESIGN VISION & THEME
+
+**Overall Aesthetic**: Modern SaaS with a "truth verification" theme  
+**Color Palette**:
+- **Primary**: Deep purple/indigo (#5B21B6 or #4C1D95) — Trust, intelligence, precision
+- **Success**: Vibrant green (#10B981 or #059669) — Truth verified
+- **Warning**: Warm amber (#F59E0B) — Caution, nuance
+- **Danger**: Coral red (#EF4444) — Misinformation detected
+- **Neutral**: Slate (#64748B) — Unverifiable, insufficient data
+- **Background**: Clean white (#FFFFFF) with subtle gradients and dark modes for night
+
+**Typography**:
+- Headlines: Modern sans-serif (Inter, Geist Sans, or similar)
+- Body: Clean, readable sans-serif with 16px+ base size
+- Accent: Optional mono for code/URLs
+
+**Visual Language**:
+- Smooth glassmorphism cards (subtle backdrop blur)
+- Micro-interactions: Hover effects, animated checkmarks, pulse animations
+- Icons: Custom SVG or iconset reflecting "truth," "verification," "analysis"
+- Shadows: Soft, layered elevation for depth
+- Borders: Subtle colored left borders on verdict cards (matches verdict type)
+
+---
+
+📱 CORE PAGE: FACT-CHECK DASHBOARD
+
+1. HEADER SECTION
+- **Hero Banner**: Full-width or contained, with gradient background (purple to indigo)
+- **Logo/Branding**: 
+  - Icon: Magnifying glass with checkmark overlay (truth-seeking)
+  - Text: "TruthBot" in bold, modern font
+  - Tagline: "AI-Powered Fact-Checking at Lightning Speed"
+- **Subtitle** (under tagline): "Verify claims, expose misinformation, discover the truth."
+- **Visual Elements**: 
+  - Animated particle background (subtle, non-distracting)
+  - Or: Animated waveform/neural network pattern
+  - Or: Stylized globe with search markers
+- **Navigation** (top-right): 
+  - Link to "How It Works" (modal/page)
+  - Link to "About" (modal/page)
+  - Dark mode toggle icon (moon/sun)
+
+---
+
+2. MAIN INPUT SECTION
+- **Container**: White card with soft shadow, rounded corners (border-radius: 16px)
+- **Card Design**: 
+  - Subtle gradient background (white to light purple/gray)
+  - Hover effect: Border color shifts to purple, shadow deepens
+  - Transition: Smooth 300ms
+- **Label**: 
+  - Icon: 📝 (or custom pencil icon)
+  - Text: "What claim would you like to fact-check?"
+  - Font: 18px bold, color: #1F2937
+- **Text Input**:
+  - Placeholder: "e.g., 'The moon landing was faked,' 'Climate change is real,' 'Vaccines cause autism'"
+  - Size: Responsive (full width on mobile, 600px on desktop)
+  - Height: 56px minimum
+  - Padding: 16px
+  - Border: 2px solid #E5E7EB
+  - Focus state: Border color → purple (#7C3AED), ring shadow
+  - Font: 16px, line-height: 1.5
+- **Submit Button**:
+  - Text: "Check This Claim" or "Verify Now"
+  - Size: 56px height, 200px width (or full width on mobile)
+  - Background: Linear gradient purple to indigo (#7C3AED → #4F46E5)
+  - Hover: Brighten gradient, add shadow, slight scale up (1.02x)
+  - Active: Scale down (0.98x)
+  - Loading state: Spinner animation, text changes to "Checking..."
+  - Icon: Magnifying glass + lightning bolt (before text)
+  - Border: None
+  - Cursor: Pointer
+  - Transition: All 200ms
+
+---
+
+3. PROCESSING STATUS SECTION
+Display during API call (hidden initially, shown via conditional rendering):
+
+- **Container**: Centered, full width
+- **Progress Indicator**: 
+  - Three-step timeline visualization (horizontal or vertical)
+  - Step 1: "🔎 Web Search" — Searching with Tavily
+  - Step 2: "🤖 AI Analysis" — Processing with agents
+  - Step 3: "✓ Generating Verdict" — Finalizing results
+  - **Active step**: Animated pulse effect, bright color
+  - **Completed step**: Checkmark icon, grayed out
+  - **Pending step**: Dimmed, outline only
+- **Status Message**:
+  - Large, animated text (20px)
+  - Color: Purple (#7C3AED)
+  - Animation: Fade in/out loop or typing effect
+  - Update dynamically based on API call progress
+  - Example: "Found 8 credible sources... now analyzing with AI agents..."
+
+---
+
+4. VERDICT DISPLAY SECTION
+Display once API returns (after status disappears):
+
+**Container Layout**:
+- White card, soft shadow, rounded corners
+- Fade-in animation (300ms)
+- Left border: 6px thick, color-coded by verdict type
+- Padding: 32px
+
+**A. Verdict Type & Confidence Header**
+- **Verdict Display**:
+  - Icon (large, 64px) + Text (large, 32px bold)
+  - **Verdicts & Styling**:
+    - ✅ **TRUE**: Green icon (#10B981), text "FACT VERIFIED"
+    - ❌ **FALSE**: Red icon (#EF4444), text "FALSE"
+    - ⚠️ **PARTIALLY TRUE**: Amber icon (#F59E0B), text "PARTIALLY TRUE"
+    - ❓ **UNVERIFIABLE**: Gray icon (#64748B), text "UNVERIFIABLE"
+    - ⚠️ **MISLEADING**: Orange icon (#F97316), text "MISLEADING"
+- **Confidence Badge**:
+  - Pill-shaped (rounded-full)
+  - Text: "Confidence: High/Medium/Low"
+  - Background & Border: Color-coded
+    - High: Green background, bold text
+    - Medium: Amber background, bold text
+    - Low: Red background, bold text
+  - Positioned top-right of verdict section
+
+**B. Original Claim Display**
+- Small label: "ORIGINAL CLAIM"
+- Claim text: Italic, medium gray, 16px
+- Enclosed in subtle border or background highlight
+
+**C. Verdict Reasoning Section**
+- Label: "WHY THIS VERDICT?"
+- Content: Parse and render markdown from API response
+  - Use markdown library (react-markdown or remark)
+  - Style markdown elements:
+    - Headers: Bold, purple, slight underline
+    - Bold text: Dark gray
+    - Lists: Bullet points with indentation
+    - Links: Underlined, purple, hover effect
+- Font: 16px, line-height: 1.8, color: #374151
+
+**D. Sub-Claims Breakdown** (Optional advanced feature)
+- Label: "KEY CLAIMS ANALYZED"
+- Display as expandable cards or accordion:
+  - Each sub-claim with status badge (Supported/Contradicted/Unclear)
+  - Color: Green/Red/Gray respectively
+  - Attach best evidence source below
+
+**E. Top Sources / Evidence Table**
+- Label: "TOP SOURCES (Max 6)"
+- Table or card layout:
+  - **Column 1**: Source Title (bold, 16px)
+  - **Column 2**: URL (smaller, gray, truncated with ellipsis, links to source)
+  - **Column 3**: Credibility Tier (pill badge: HIGH=dark green, MEDIUM=yellow, LOW=red)
+  - **Column 4**: Relationship (text: "Supports Claim" / "Contradicts" / "Context")
+  - **Column 5**: One-line reason (italic, gray, small)
+  - Hover on row: Slight background color shift, show full URL in tooltip
+  - Mobile: Stack columns vertically
+
+**F. Limitations / Caveats Section**
+- Label: "IMPORTANT NOTES"
+- Background: Light yellow/gray (subtle alert style)
+- Content: Parse markdown from API
+- Display in bullet points or paragraph
+- Icons before items (lightbulb, warning, info)
+
+---
+
+5. ACTION BUTTONS (Below Verdict)
+- **"Check Another Claim"**: Button to reset form and input new claim
+  - Style: Secondary button (purple text, purple border, white background)
+  - Hover: Purple background, white text
+- **"Share Verdict"**: 
+  - Icon: Share symbol
+  - Opens modal with:
+    - Copy-to-clipboard button (show "Copied!" feedback)
+    - Social share buttons (X/Twitter, Facebook, LinkedIn, email)
+- **"Save to History"**: 
+  - Icon: Bookmark or star
+  - Toggles saved state (filled/outline)
+  - Shows toast: "Claim saved to history"
+
+---
+
+🔧 ERROR HANDLING & EDGE CASES
+
+**Empty Claim Input**:
+- Shake animation on input
+- Red border (2px)
+- Error message: "Please enter a claim to fact-check"
+- Clear error on input focus
+
+**API Error (500 / Timeout)**:
+- Full-page error card with:
+  - Icon: ⚠️ (red)
+  - Title: "Fact-Checking Error"
+  - Message: Display error from API or generic "Our AI couldn't process this claim. Please try again."
+  - Button: "Try Again" (retry API call)
+  - Link: "Contact Support"
+
+**Search Found No Results**:
+- Warning card (amber background)
+- Message: "No web results found for this claim. The AI analyzed based on its training data."
+- Display verdict but lower confidence
+
+**Rate Limiting / Service Unavailable**:
+- User-friendly modal
+- Message: "Service is temporarily busy. Please try again in a moment."
+- Auto-retry button or countdown timer
+
+---
+
+📱 RESPONSIVE DESIGN
+
+**Breakpoints** (Tailwind defaults):
+- **Mobile (sm)**: Input full width, verdict card padding reduced, table becomes stacked
+- **Tablet (md)**: 80% width container, side padding
+- **Desktop (lg+)**: 100% max-width 900px, centered container
+
+**Mobile Optimizations**:
+- Touch-friendly buttons (min 48px height)
+- Swipeable verdict carousel (optional)
+- Collapsible sources section
+- Smaller header, less spacing
+
+---
+
+🎯 INTERACTIONS & MICRO-ANIMATIONS
+
+1. **Input Focus**: Border color shifts to purple, subtle glow
+2. **Button Hover**: Gradient brightens, shadow deepens, slight scale up
+3. **Button Active**: Scale down, shadow less pronounced
+4. **Verdict Fade-In**: 300ms ease-in-out from opacity 0 to 1
+5. **Status Text**: Subtle pulse or fade animation
+6. **Checkmarks**: Animated draw/stroke (SVG animation)
+7. **Confidence Badge**: Subtle scale/bounce on appearance
+8. **Source Links**: Underline on hover, color shift
+9. **Dark Mode**: Smooth transition, all colors adapt
+
+---
+
+🌙 DARK MODE
+
+- Background: #1F2937 or #111827
+- Cards: #374151
+- Text: #F3F4F6
+- Borders: #4B5563
+- Accents: Colors remain same (purple, green, red)
+- Apply via Tailwind `dark:` utilities
+- Toggle via button in header
+
+---
+
+🔗 ADDITIONAL PAGES / SECTIONS
+
+**Optional but recommended**:
+
+1. **"How It Works" Modal/Page**:
+   - Explain 3-phase process (Search → Credibility Check → Verdict)
+   - Animated diagrams showing agent flow
+   - Accessibility notes (no source fabrication, real URLs only)
+
+2. **History Page** (if implementing saved claims):
+   - List of previous claims checked
+   - Quick access to re-check claims
+   - Filter by verdict type
+
+3. **FAQ Section**:
+   - Common questions about accuracy, sources, limitations
+   - Styling: Expandable accordion cards
+
+4. **Footer**:
+   - Copyright: "TruthBot © 2024 | Powered by Azure AI Agents & Tavily"
+   - Links: GitHub, Privacy Policy, Terms, Contact
+   - Social icons: GitHub, Twitter, LinkedIn (if applicable)
+
+---
+
+🛠️ TECHNICAL IMPLEMENTATION REQUIREMENTS
+
+**Stack**:
+- **Framework**: Next.js 14+ (App Router recommended)
+- **Styling**: Tailwind CSS 3.4+
+- **UI Components**: Headless UI, Radix UI, or shadcn/ui (optional but recommended)
+- **Markdown Rendering**: react-markdown + remark/rehype
+- **HTTP Client**: fetch API or axios
+- **Loading States**: React hooks or Suspense
+- **Toast Notifications**: React Hot Toast or Sonner
+- **Icons**: Heroicons, Lucide, or Tabler Icons
+- **Animations**: Framer Motion (optional, for advanced animations)
+
+**Environment Setup**:
+- `.env.local` file with API base URL:
+  ```
+  NEXT_PUBLIC_API_BASE_URL=http://localhost:8000
+  # or your production API endpoint
+  ```
+
+**API Integration**:
+```javascript
+// Example fetch to /fact-check endpoint
+const response = await fetch(
+  `${process.env.NEXT_PUBLIC_API_BASE_URL}/fact-check`,
+  {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ claim: userInput })
+  }
+);
+const data = await response.json();
+// data.verdict is markdown string
+// Parse and render with react-markdown
+```
+
+**State Management**:
+- Use React hooks (useState, useEffect) for simple state
+- Or Zustand/Jotai if complexity grows
+
+**Performance**:
+- Optimize images (next/image)
+- Lazy load markdown renderer
+- Debounce input (optional)
+
+---
+
+✨ VISUAL DESIGN INSPIRATION
+
+- **Color Tone**: Vercel's Next.js site, Anthropic Claude's interface (clean, modern)
+- **Glassmorphism**: Apple's design language
+- **Micro-interactions**: Framer Motion's showcase
+- **Typography**: Inter font family (modern, tech-forward)
+- **Icons**: Heroicons style (minimalist, professional)
+
+---
+
+📋 DELIVERABLES CHECKLIST
+
+- [x] Responsive, mobile-first layout (sm, md, lg breakpoints)
+- [x] Single-page app with fact-check form and verdict display
+- [x] Integration with `/fact-check` POST endpoint (API call handling)
+- [x] Markdown rendering of verdict response
+- [x] Verdict type color-coding (5 types with icons)
+- [x] Confidence level display (High/Medium/Low styling)
+- [x] Sources/evidence table with credibility tiers
+- [x] Processing status display (3-phase animation)
+- [x] Error handling (empty input, API errors, timeouts)
+- [x] Dark mode support
+- [x] Smooth animations and micro-interactions
+- [x] Accessibility (ARIA labels, keyboard navigation, alt text)
+- [x] "Check Another Claim" reset functionality
+- [x] Share and Save buttons (optional but nice-to-have)
+- [x] Responsive typography and spacing
+- [x] Loading spinner/skeleton states
+- [x] Footer with branding and links
+
+---
+
+🚀 LAUNCH & DEPLOYMENT
+
+- Deploy via Vercel (native Next.js support)
+- Or: Netlify, AWS Amplify, Docker
+- Set `NEXT_PUBLIC_API_BASE_URL` in production environment
+- Enable CORS on backend (FastAPI) for cross-origin requests
+- Test with sample claims before go-live
+
+---
+
+💡 CREATIVE ENHANCEMENTS (Optional Extras)
+
+1. **Animated Background**: Subtle neural network or particle effect
+2. **Verdict Soundscapes**: Subtle, positive sound on TRUE (optional, can be disabled)
+3. **Credibility Meter**: Animated circular progress bar showing confidence
+4. **Claim Trends**: Show "Most Popular Claims Checked" or trending topics (requires backend)
+5. **Batch Checking**: Allow users to check multiple claims at once
+6. **Export Verdicts**: PDF or image export of fact-check result
+7. **Comparison View**: Compare verdicts across multiple sources
+8. **Discussion/Comments**: Community voting on verdict accuracy (advanced)
+9. **AI Explainability**: Show which sources influenced each part of the verdict
+10. **Accessibility Focus**: High-contrast mode, dyslexia-friendly font options
+
+---
+
+This prompt provides everything a website builder needs to create a stunning, functional Next.js frontend for TruthBot that seamlessly integrates with your fact-checking API. 🎯

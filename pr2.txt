@@ -1,0 +1,560 @@
+🤣 TRUTHBOT ULTRA-CREATIVE "DIGITAL DETECTIVE" DESIGN PROMPT
+
+PROJECT BRIEF
+
+Build an **outrageously fun, personality-packed AI fact-checking platform** that feels like a comedic buddy cop movie meets a detective noir mystery, but for debunking misinformation. This isn't boring fact-checking—it's **TruthBot: The Wisecracking AI Detective** complete with sarcastic commentary, animated characters, and visual gags. Users should laugh while verifying claims. Responsible design, hilarious personality.
+
+---
+
+🎨 DESIGN VISION: "DETECTIVE BUREAU" MEETS "COSMIC COMEDY"
+
+**Overall Aesthetic**: 1970s Detective Noir + Modern Sci-Fi Comedy + Retro Game Vibes  
+**Vibe**: Think "Disco Inferno meets AI Sarcasm" with neon glow and comic book energy
+
+**Color Palette** (Bold & Playful):
+- **Primary**: Neon cyan/electric blue (#00D9FF) — "Truth rays"
+- **Secondary**: Hot pink/magenta (#FF006E) — "Bust the myths"
+- **Accent**: Acid lime green (#39FF14) — "OMG PLOT TWIST!"
+- **Danger**: Burning orange (#FF6B00) — "Red Alert! 🚨"
+- **Success**: Glowing green (#00FF41) — "TRUTH CONFIRMED 🎉"
+- **Background**: Deep space dark (#0A0E27) — Star-studded night sky
+- **Cards**: Frosted glass with gradient glow (#1A1F3A with neon borders)
+
+**Typography**:
+- **Headlines**: Bold, ultra-modern geometric fonts (Orbitron, Space Mono, JetBrains Mono)
+- **Body**: Futuristic but readable (IBM Plex Mono, Courier Prime)
+- **Taglines**: Comic-style fonts with speech bubbles
+- **Easter Eggs**: Include retro 8-bit font for jokes
+
+**Visual Language**:
+- Neon glow effects (CSS blur & box-shadow)
+- Glitchy text animations (subtle VHS effect)
+- Animated scanlines across cards
+- Bouncy, exaggerated micro-interactions
+- Comic book-style "POW!" "BOOM!" "FACT!" explosions
+- Pixel art detective character/mascot
+- Hand-drawn arrows and annotations
+- Animated "loading" tape reels and progress bars
+- Floating particles (tiny stars, question marks, exclamation points)
+
+---
+
+🎭 MEET "DETECTIVE BOT": YOUR SARCASTIC AI PARTNER
+
+**Character Design**:
+- **Appearance**: Retro robot detective (think Wall-E meets Blade Runner's Roy Batty)
+- **Personality**: 
+  - Dry, sarcastic commentary on every claim
+  - Uses 1970s detective slang ("Listen pal, we got a case here...")
+  - Breaks the fourth wall occasionally
+  - Gets excited about TRUE claims (jumping animation)
+  - Dramatically disappointed by FALSE claims (sad trombone)
+- **Reactions** (shown as floating character animations):
+  - **Deep in thought**: Magnifying glass grows and shrinks, lightbulb blinks
+  - **Searching**: Zooms around screen frantically
+  - **Skeptical**: One eyebrow raised, speech bubble: "Hmm... something smells fishy 🐟"
+  - **Found it**: Points dramatically, "EUREKA!" text explodes
+  - **Confused**: Head spins, question marks orbit
+  - **Delivering verdict**: Pulls off sunglasses in slow-mo, dramatic freeze frame
+
+**Speech Bubbles** (appear throughout UI):
+- Witty one-liners
+- Sarcastic observations
+- Motivational quotes (ironically)
+- Self-aware meta-commentary
+- Examples:
+  - "Buckle up, buttercup! 🎢"
+  - "Another conspiracy theory? 🤡 Let's cook!"
+  - "Plot twist incoming... 🎬"
+  - "The algorithm has spoken!"
+
+---
+
+📱 CORE PAGE: "DETECTIVE BUREAU HEADQUARTERS"
+
+1. HEADER: "WELCOME TO THE TRUTH BUREAU"
+- **Full-width hero** with animated city skyline (diagonal scan lines moving)
+- **Neon sign style logo**: "TRUTH BOT" with flickering effect
+- **Subtitle in neon pink**: "Est. 2025 | Making Claims Confess Since Yesterday"
+- **Detective Bot character** standing in silhouette (waves at user on first visit)
+- **Particles floating**: Question marks, exclamation points, magnifying glasses
+- **Background animation**: Scrolling city lights, blinking windows, occasional flying UFO (joke)
+- **Navigation**:
+  - "CASE FILES" (history)
+  - "HOW WE CRACK CASES" (how it works)
+  - "ABOUT THIS UNIT" (about)
+  - "DARK ALLEY MODE" (dark mode toggle - icon: moon with sunglasses)
+
+---
+
+2. MAIN INPUT SECTION: "THE INTERROGATION ROOM"
+- **Title**: "🕵️ Bring a Claim to the Bureau"
+- **Subtitle**: "(It won't leave the same way... probably)" 
+- **Container Design**:
+  - Thick neon cyan border (6px)
+  - Glowing box-shadow: `0 0 20px #00D9FF`
+  - Animated scanlines moving down continuously
+  - Background: Subtle grid pattern (hacker aesthetic)
+- **Detective Bot appears** on left side, standing arms crossed
+- **Text Input**:
+  - Placeholder (hilarious): "e.g., 'I can lick my own elbow,' 'Birds are real,' 'The Earth is flat (just for you, round-earthers)'"
+  - Size: Full width on mobile, 700px on desktop
+  - Height: 64px (big, inviting)
+  - Font: Monospace, 16px, bright cyan text on dark background
+  - Border focus: Glowing neon pink
+  - Cursor: Blinking bar (old-school terminal style)
+  - Character count badge (top-right): Shows "X/500 chars" in neon green
+- **Submit Button**:
+  - Text: "🔍 INTERROGATE THIS CLAIM" or "⚡ RUN IT THROUGH THE ALGORITHM"
+  - Size: 64px height, responsive width
+  - Background: Animated gradient (cyan → pink → lime → cyan loop, 4s cycle)
+  - Hover: Enlarge slightly (1.05x), add pulsing glow
+  - Active: "SQUISH" animation (0.95x)
+  - Disabled state (empty input): Grayed out with sad Detective Bot face
+  - Loading: Button text becomes "🔍 DIGGING THROUGH THE INTERWEBS..." with spinning magnifying glass
+  - Success pulse: Explode with "POW! 💥" text (confetti animation)
+
+---
+
+3. PROCESSING STATUS: "INVESTIGATION IN PROGRESS..."
+- **Full-screen animated overlay** (semi-transparent dark blue)
+- **Detective Bot character** takes center stage:
+  - Phase 1: "🔎 SEARCHING THE WEB DIMENSION..."
+    - Bot zooms around frantically
+    - Web pages fly past in background
+    - Text: "Found X sources so far! Keep your pants on... 👖"
+  - Phase 2: "🤖 INTERROGATING THE AI SQUAD..."
+    - Bot pulls out multiple "agent" characters (tiny robots)
+    - They argue in speech bubbles (funny debate animation)
+    - Text: "Wait, these 3 agents need to GET ALONG... negotiating..."
+  - Phase 3: "✨ CRAFTING THE ULTIMATE VERDICT..."
+    - Bot types dramatically on cosmic keyboard
+    - Sparks fly everywhere
+    - Text: "Writing the truth with EXTRA FLAIR... 🎭"
+- **Progress bar**: Retro arcade-style (pixel blocks filling, beep sounds optional)
+- **Easter egg**: Click on Detective Bot to hear sarcastic quips
+  - "Still here? You must REALLY want the truth 🙃"
+  - "This is taking longer than expected... maybe the internet is broken? 🤔"
+  - "Don't look at me, I'm just as confused as you are 🤷"
+
+---
+
+4. VERDICT DISPLAY: "THE VERDICT IS IN!"
+- **Explosion animation**: Confetti, stars, "DING!" sound (optional)
+- **Fade-in with comic-book "BOOM!" text**
+- **Detective Bot character** holds up a scroll/certificate dramatically
+- **Verdict section container**:
+  - Border: Thick glowing neon (color matches verdict type)
+  - Background: Animated gradient (moves left-right continuously)
+  - Card style: Comic book panel (black border, yellow/white interior highlights)
+  - Shadow: Intense neon glow
+
+**A. THE BIG REVEAL: Verdict Type**
+- **Icon animation**: Spins in, settles with bounce
+- **Verdict with sarcastic commentary**:
+  - ✅ **TRUE**: 
+    - Icon: Checkmark with halo glow
+    - Text: "THIS IS LEGIT, FAM 🎯"
+    - Detective Bot: "Plot twist: something is actually true on the internet!"
+    - Background: Animated confetti
+    - Glow: Neon green
+  - ❌ **FALSE**: 
+    - Icon: X with explosion effect
+    - Text: "PANTS ON FIRE 🔥"
+    - Detective Bot: "Another day, another lie busted. Rough."
+    - Background: Animated flame particles
+    - Glow: Burning orange
+  - ⚠️ **PARTIALLY TRUE**: 
+    - Icon: Half-checkmark, half-X (dancing)
+    - Text: "IT'S... COMPLICATED 💔"
+    - Detective Bot: "Look, it's not you, it's your claim..."
+    - Background: Animated question marks
+    - Glow: Acid lime green
+  - ❓ **UNVERIFIABLE**: 
+    - Icon: Shrugging robot emoji (animated)
+    - Text: "WE GOT NOTHING, PAL 🤐"
+    - Detective Bot: "This claim is so vague, even Google quit."
+    - Background: Animated static/noise
+    - Glow: Slate blue
+  - ⚠️ **MISLEADING**: 
+    - Icon: Finger wagging (animated)
+    - Text: "NICE TRY, BUDDY 😏"
+    - Detective Bot: "That's technically true, but MISSING KEY CONTEXT..."
+    - Background: Animated winking eyes
+    - Glow: Hot pink
+
+- **Confidence Badge** (styled as crime scene tape):
+  - Strip of yellow/black striped tape
+  - Text: "CONFIDENCE: HIGH 🔒 / MEDIUM 🔓 / LOW 🚨"
+  - Position: Top-right corner
+  - Animation: Sways slightly (tape fluttering in wind)
+
+**B. Original Claim Display**:
+- **Crime scene photo** style (polaroid frame)
+- Label: "THE ALLEGED CLAIM:"
+- Claim text in typewriter font (monospace)
+- Slight tilt/rotation (polaroid effect)
+- Example style: `> THE CLAIM WAS: "The moon is made of cheese"...`
+
+**C. Detective's Case Notes**: "WHY DETECTIVE BOT SAYS..."
+- Label: "🕵️ DETECTIVE'S CASE NOTES"
+- Content: Parse markdown verdict from API
+- Style as "typed investigation report":
+  - Dark background with subtle green terminal glow
+  - Text renders with typing animation (fast, visible character-by-character)
+  - Markdown styling:
+    - **Bold**: Neon cyan text
+    - *Italic*: Pinkish glow
+    - Lists: Numbered with little icon bullets (🔴 for evidence)
+- Font: Monospace (IBM Plex Mono or Courier Prime)
+- Include sarcastic asides in speech bubbles:
+  - "(Wait, this part is actually important 👆)"
+  - "(Our sources actually agree on something!)"
+  - "(Yeah, we were surprised too 😲)"
+
+**D. The Evidence Lineup**: "EXHIBIT A, B, C..."
+- Label: "📋 SOURCES THAT TESTIFIED"
+- Display sources as "lineup" cards (detective/interrogation room aesthetic):
+  - Each source is a tall card (like a mugshot)
+  - Header: Source title (like suspect name)
+  - Photo/Icon: Credibility tier visualization
+  - Stats:
+    - Credibility Score: Big bold number (0-10 scale) with emoji reaction
+      - 8-10: "SQUEAKY CLEAN! 🤓"
+      - 5-7: "MOSTLY LEGIT... 🤔"
+      - 0-4: "SUPER SKETCHY... 👀"
+    - Tier: HIGH/MEDIUM/LOW in bold colored text
+    - Relationship: "SUPPORTS" / "CONTRADICTS" / "CONTEXT" with arrows
+    - Red flags (if any): Display in warning red text with icon
+      - "⚠️ Clickbait vibes detected"
+      - "⚠️ Author unknown (sus 😒)"
+      - "⚠️ Conspiracy language incoming"
+  - Link to URL: Truncated, underlined, pink
+  - One-liner reason in italic gray
+  - Hover: Card enlarges, shows full URL in tooltip with "CLICK TO VISIT SOURCE" button
+
+**E. The Twist**: "PLOT TWISTS & MISSING PIECES"
+- Label: "🎬 PLOT TWISTS & MISSING PIECES"
+- Background: Comic book style speech bubble
+- Content: Limitations/caveats from API
+- Styled as "detective's confession":
+  - "Listen, there's some stuff we COULDN'T figure out..."
+  - Display as a checklist of missing items:
+    - "❌ No recent sources found"
+    - "❌ Conflicting evidence detected"
+    - "❌ Some sources are low-credibility"
+    - "✓ But we tried our best!"
+
+---
+
+5. ACTION BUTTONS: "WHAT'S NEXT, CHIEF?"
+- **Check Another Claim**: 
+  - Tooltip: "Ready for ANOTHER MYSTERY? 🔍"
+  - Style: Glowing neon cyan border, transparent background
+  - Hover: Fills with cyan, text goes dark
+  - Icon: Reset/new case icon
+- **Share This Verdict**: 
+  - Tooltip: "Tell everyone the TRUTH! 📢"
+  - Icon: Megaphone or Twitter bird
+  - Modal shows:
+    - "Copy verdict" button with success feedback ("Copied like a true gossip! 📋")
+    - Social share buttons styled as neon buttons
+    - Each with funny copy:
+      - Twitter: "BLAST THIS ON THE INTERNET 🚀"
+      - Facebook: "Tell your MOM the truth! 👵"
+      - LinkedIn: "Let's discuss this synergy 💼" (ironic)
+      - Email: "Forward to 10 people or you'll have BAD LUCK 😱 (jk)"
+- **Save to Case Files**: 
+  - Tooltip: "Save this for later (you WILL forget otherwise)"
+  - Icon: Folder or filing cabinet
+  - Toggle animation: Folder opens/closes with papers flying
+  - Toast: "📁 CASE FILED AWAY! You have X cases on record."
+
+---
+
+🎪 ERROR HANDLING: "OOPS... SOMETHING WENT WRONG"
+
+**Empty Claim Input**:
+- Detective Bot face appears, sad expression
+- Input shakes with earthquake effect
+- Text: "Uhhh... you gotta GIVE ME SOMETHING TO WORK WITH, PAL! 😅"
+- Input gets a red glowing border
+- Auto-clears error on user focus
+
+**API Error / Timeout**:
+- **Full-page error animation**: "SYSTEM MALFUNCTION 🤖💥"
+- Detective Bot appears broken (pixel art "glitch" effect)
+- Error message options:
+  - "Our AI agents are taking a coffee break ☕"
+  - "The internet hiccupped. It happens. 🤷"
+  - "ERROR 404: Truth Not Found (just kidding, try again) 😅"
+- Buttons:
+  - "🔄 TRY AGAIN, I BELIEVE IN YOU"
+  - "📞 CALL THE HELP DESK (just kidding, there is no help desk)"
+
+**No Search Results Found**:
+- Warning card with animated warning sign
+- Detective Bot shrugs dramatically
+- Message: "WE SEARCHED EVERYWHERE and found... NOTHING? 👻"
+  - "The internet has NO IDEA what you're talking about."
+  - "Verdict based on AI knowledge only. (Risky business! 🎲)"
+- Verdict still displays but with low confidence glowing red
+
+**Rate Limit Reached**:
+- Detective Bot looks at watch
+- Message: "Whoa, slow down cowboy! ⏸️"
+  - "You've checked [X] claims in the last hour."
+  - "Give us a breather... come back in [X] minutes!"
+- Countdown timer with beeping sound (optional, can disable)
+
+---
+
+📱 RESPONSIVE DESIGN: "WORKS ON YOUR POTATO PHONE TOO"
+
+**Mobile** (sm):
+- Full-width layout, no sidebars
+- Detective Bot scales down but stays prominent
+- Input takes up 100% width
+- Sources carousel (swipe left/right) instead of grid
+- Verdict section: Accordion/collapsible sub-sections
+- Buttons stack vertically
+- Font sizes reduced but still readable
+
+**Tablet** (md):
+- 2-column layout (left: input, right: results preview)
+- Detective Bot floats side-by-side
+- Sources in 2-column grid
+
+**Desktop** (lg+):
+- Full 3-column layout if desired
+- Detective Bot takes up more space (larger animations)
+- Sources in 3-column grid
+- Sidebar with "CASE FILES" quick access
+
+---
+
+🎬 MICRO-ANIMATIONS & INTERACTIONS: "PURE JOY"
+
+1. **Input Focus**: Border glows cyan, Detective Bot winks at you, "Ready when you are! 👀"
+2. **Button Hover**: Gradient animation intensifies, text glows, slight lift (scale 1.05)
+3. **Verdict Appears**: Dramatic spin-in, shake, settle with bounce
+4. **Source Cards**: Hover → enlarge slightly, glow intensifies, shows "CLICK FOR MORE" tooltip
+5. **Checkmarks**: Animated draw effect (SVG stroke animation)
+6. **Confidence Badge**: Pulses on appearance, subtle swing animation
+7. **Detective Bot**: 
+   - Blinks occasionally (random)
+   - Taps foot impatiently during loading
+   - Does little "yes" bounce for TRUE verdicts
+   - Slaps forehead for FALSE verdicts
+   - Throws hands up for UNVERIFIABLE verdicts
+8. **Confetti**: On TRUE verdict (canvas-based, realistic physics)
+9. **Flame particles**: On FALSE verdict (floating upward)
+10. **Text glitch effect**: Occasional random letters glitch on hover (subtle, fun)
+11. **Easter egg**: Hold Detective Bot for 3 seconds = plays sarcastic joke
+
+---
+
+🌙 DARK MODE: "ALREADY IN DARK ALLEY MODE"
+
+- The app IS dark mode by default (fits the noir detective theme)
+- "Light mode" (called "OFFICE MODE") available as toggle:
+  - Light background (#F0F4F8)
+  - Dark text
+  - Neon colors still pop
+  - Detective Bot looks under harsh office lighting (funny aesthetic)
+- Smooth transition between modes (all colors animate)
+
+---
+
+🔗 BONUS PAGES / EASTER EGGS
+
+1. **"HOW WE CRACK CASES" Page**:
+   - Animated diagram of 3-phase process
+   - Styled as "Detective Training Manual"
+   - Each phase is a comic book panel
+   - Detective Bot narrates: "Listen kid, fact-checking is like this..."
+
+2. **"CASE FILES" (History Page)**:
+   - Styled as filing cabinet with drawers
+   - Each saved claim is a case file folder
+   - Click to reopen verdict
+   - Options: Delete, re-check, share
+
+3. **404 Page**:
+   - "THIS PAGE DOESN'T EXIST (yet)" 
+   - Detective Bot on phone: "Yeah, they're looking for page 404... no, we don't have it!"
+   - Animated office chaos in background
+
+4. **FAQ Section**:
+   - Accordion cards
+   - Detective Bot answers each question in first-person
+   - Humorous answers:
+     - Q: "How accurate is TruthBot?"
+     - A: "About 87% accurate. Which is better than your cousin Facebook, am I right? 😉"
+
+5. **Easter Eggs Hidden Throughout**:
+   - Click Detective Bot's badge → unlock achievement
+   - Konami code (up, up, down, down, left, right, left, right, B, A) → retro mini-game
+   - Type "the truth is out there" → spooky X-Files Easter egg
+   - Share button shows funny stats: "You're the 12,847th person to share this. ICONIC! 🌟"
+
+---
+
+🛠️ TECHNICAL IMPLEMENTATION: "BUILDING THE MACHINE"
+
+**Stack**:
+- **Framework**: Next.js 14+ (App Router)
+- **Styling**: Tailwind CSS 3.4+ with custom plugin for neon effects
+- **Animations**: 
+  - Framer Motion (smooth, advanced animations)
+  - CSS Keyframes (glow effects, scanlines)
+  - Canvas (confetti, particles)
+- **UI Components**: shadcn/ui customized with neon theme
+- **Markdown**: react-markdown with syntax highlighting
+- **HTTP**: fetch API or axios with retry logic
+- **Sound** (optional): Tone.js for cute beeps/notification sounds
+- **Icons**: Custom SVG animations or Lucide Icons with custom styles
+- **Toast**: Sonner (beautifully styled notifications)
+- **State**: Zustand (simple, fun state management)
+
+**Custom Tailwind Config**:
+```javascript
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        neon: {
+          cyan: '#00D9FF',
+          pink: '#FF006E',
+          lime: '#39FF14',
+          orange: '#FF6B00',
+          green: '#00FF41',
+        }
+      },
+      boxShadow: {
+        neon: '0 0 20px var(--color-neon)',
+        'neon-cyan': '0 0 20px #00D9FF',
+        'neon-pink': '0 0 20px #FF006E',
+      },
+      animation: {
+        glow: 'glow 2s ease-in-out infinite',
+        glitch: 'glitch 0.2s ease-in-out',
+        scanlines: 'scan 8s linear infinite',
+      },
+      keyframes: {
+        glow: {
+          '0%, 100%': { textShadow: '0 0 10px currentColor' },
+          '50%': { textShadow: '0 0 20px currentColor' },
+        },
+        scanlines: {
+          '0%': { transform: 'translateY(-100%)' },
+          '100%': { transform: 'translateY(100%)' },
+        },
+      },
+    },
+  },
+};
+```
+
+**API Integration** (with Detective Bot commentary):
+```javascript
+const response = await fetch(
+  `${process.env.NEXT_PUBLIC_API_BASE_URL}/fact-check`,
+  { method: 'POST', body: JSON.stringify({ claim }) }
+);
+const data = await response.json();
+// Toast message: "VERDICT INCOMING... *drumroll* 🥁"
+```
+
+---
+
+✨ VISUAL DESIGN REFERENCES
+
+- **Color Inspiration**: Cyberpunk 2077, Synthwave album covers, Blade Runner 2049
+- **Typography**: Orbitron (Google Fonts), IBM Plex Mono
+- **Animation Style**: Tron, Papyrus (neon effect), Retro arcade games
+- **Character Design**: Portal's GLaDOS meets Wall-E
+- **UI Inspiration**: Figma's playful design, Apple's Fun and Whimsy
+
+---
+
+📋 DELIVERABLES CHECKLIST
+
+- [x] Hilarious, personality-driven UI (sarcastic Detective Bot)
+- [x] Neon glow aesthetic (cyan, pink, lime glowing everywhere)
+- [x] Animated Detective Bot character (reacts to all verdicts)
+- [x] Retro detective/noir theme mixed with futuristic sci-fi
+- [x] Funny error messages and loading states
+- [x] Comic-book style verdict displays (POW! BOOM! animations)
+- [x] Confetti/effects based on verdict type
+- [x] Responsive mobile-first layout
+- [x] Markdown verdict rendering with styled code blocks
+- [x] Evidence "lineup" display (mugshot-style sources)
+- [x] Micro-interactions (hover, click, focus animations)
+- [x] Easter eggs (Konami code, hidden jokes, silly stats)
+- [x] Dark mode (already built-in to theme, "Light Office Mode" toggle)
+- [x] Share/save functionality with funny copy
+- [x] Processing status with humorous updates
+- [x] Accessibility (ARIA labels, keyboard nav, respects animations preference)
+- [x] Fun fonts and typography (monospace, geometric, retro)
+- [x] Neon glowing borders and shadows
+- [x] Animated particles (floating question marks, stars)
+- [x] Sound effects (optional but recommended)
+
+---
+
+🎉 CREATIVE DETAILS THAT MAKE IT LEGENDARY
+
+1. **Detective Bot Talks to User**:
+   - "This claim is more suspicious than a three-dollar bill 💵"
+   - "I've seen cleaner databases in a junkyard 🗑️"
+   - "Confidence: High. Vibes: Immaculate. ✨"
+
+2. **Source Credibility Reactions**:
+   - HIGH source: Detective Bot salutes
+   - MEDIUM source: Detective Bot raises eyebrow
+   - LOW source: Detective Bot facepalms, "really buddy?"
+
+3. **Verdict Delivery**:
+   - TRUE: Confetti explodes, Detective Bot does victory dance, bells ring
+   - FALSE: Sad trombone plays (optional), Detective Bot shakes head in disappointment
+   - PARTIALLY TRUE: Detective Bot shrugs dramatically, "It's complicated..."
+   - UNVERIFIABLE: Detective Bot throws hands in air, "¯\\_(ツ)_/¯"
+   - MISLEADING: Detective Bot wags finger, sarcastic slow-mo walk away
+
+4. **Funny Tooltips Everywhere**:
+   - "INTERROGATE THIS CLAIM" button: "Make it SQUEAL! 🐷"
+   - Dark mode toggle: "Enter the shadows... 👀"
+   - Share button: "Spread the truth like butter! 🧈"
+
+5. **Retro Elements**:
+   - VHS glitch effect on text (subtle, occasional)
+   - Scanlines moving across verdict card
+   - Pixel-art Detective Bot head in favicon
+   - Typewriter sound on verdict text rendering (optional)
+
+6. **Interactive Easter Eggs**:
+   - Click Detective Bot multiple times → achievement unlocked
+   - Type "42" → "The Answer to Everything!" (Hitchhiker's Guide reference)
+   - Input says "Never gonna give you up" → Rick Roll verdict
+   - High confidence verdict → "Certified by Detective Bot™ - Patent Pending 🏆"
+
+---
+
+💎 FINAL TOUCHES
+
+- **Loading Skeleton**: Pixelated "Detective Bot analyzing..." animation
+- **Notifications**: Toast messages styled like detective case updates
+  - "✓ Claim filed successfully!"
+  - "⚠️ API taking longer than expected... patience, young padawan"
+- **Splash Screen** (first visit): Detective Bot introduces themselves with animation
+- **User Onboarding**: Tooltip tour highlighting key features with funny descriptions
+- **Achievements**: Unlock badges for checking claims
+  - "Verified 5 claims" → "TRUTH SEEKER 🔍"
+  - "Shared 10 verdicts" → "MESSENGER OF TRUTH 📢"
+  - "Found a FALSE claim" → "MYTH BUSTER 💥"
+
+---
+
+This design prompt is ready to create the **most entertaining, personality-packed fact-checking platform** while remaining 100% responsible and accessible. Let's make truth-checking FUN! 🚀🎭✨
